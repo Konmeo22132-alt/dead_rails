@@ -8,7 +8,7 @@ local Window = MakeWindow({
     Key = {
         KeySystem = true,
         Title = "Key System",
-        Description = "Key: konmeo22132 (you can use the link to get key,\nit helps me a lot)",
+        Description = "Key: konmeo22132 (you can use the link to get key, it helps me a lot)",
         KeyLink = "https://link-center.net/1239843/key-dead-rails",
         Keys = {"konmeo22132"},
         Notifi = {
@@ -21,7 +21,7 @@ local Window = MakeWindow({
 })
 
 MinimizeButton({
-    Image = "http://www.roblox.com/asset/?id=121832166458851",
+    Image = "http://www.roblox.com/asset/?id=83190276951914",
     Size = {60, 60},
     Color = Color3.fromRGB(10, 10, 10),
     Corner = true,
@@ -183,96 +183,21 @@ AddButton(Tab1o, {
 
 AddButton(Tab2o, {
     Name = "Full bright",
-    fullbrightEnabled = not fullbrightEnabled
-    if fullbrightEnabled then
-        game.Lighting.Brightness = 5
-        game.Lighting.ClockTime = 12
-        game.Lighting.FogEnd = 100000
-        game.Lighting.GlobalShadows = false
-    else
-        game.Lighting.Brightness = 1
-        game.Lighting.ClockTime = 14
-        game.Lighting.FogEnd = 1000
-        game.Lighting.GlobalShadows = true
-    end
-end)
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/shawnjbragdon-0/utilities/main/mini-modules/fullbright.lua"))()
+  end
+  })
 
 AddButton(Tab2o, {
     Name = "Aim bot",
     Callback = function()
-        local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-player.CameraMode = Enum.CameraMode.Classic
-local runService = game:GetService("RunService")
-local StarterGui = game:GetService("StarterGui")
-local camera = workspace.CurrentCamera
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Konmeo22132-alt/deadrail/refs/heads/main/dead_rails_aimbot-by_konmeo22132"))()
+  end
+  })
 
-local runService = game:GetService("RunService")
-local StarterGui = game:GetService("StarterGui")
-local camera = game.Workspace.CurrentCamera
-local player = game.Players.LocalPlayer
-
-local toggleLoop = nil
-local lastTarget = nil
-
-local function getClosestNPC()
-    local closestNPC = nil
-    local shortestDistance = math.huge
-    local playerPosition = player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player.Character.HumanoidRootPart.Position or nil
-
-    if not playerPosition then return nil end
-
-    for _, npc in ipairs(workspace:GetChildren()) do
-        if npc:IsA("Model") and npc:FindFirstChild("Humanoid") and npc:FindFirstChild("HumanoidRootPart") then
-            local npcHumanoid = npc.Humanoid
-            if npcHumanoid.Health > 0 then
-                local distance = (npc.HumanoidRootPart.Position - playerPosition).Magnitude
-                if distance < shortestDistance then
-                    shortestDistance = distance
-                    closestNPC = npc
-                end
-            end
-        end
-    end
-
-    return closestNPC
-end
-
-local function toggleAimbot(state, button)
-    if state then
-        button.Text = "Konmeo22132's aim status: ON"
-
-        toggleLoop = runService.RenderStepped:Connect(function()
-            local npc = getClosestNPC()
-            if npc and npc:FindFirstChild("Humanoid") and npc:FindFirstChild("HumanoidRootPart") then
-                local npcHumanoid = npc.Humanoid
-                if npcHumanoid.Health > 0 then
-                    camera.CameraSubject = npcHumanoid
-                    lastTarget = npc
-                    addPlayerHighlight()
-                else
-                    StarterGui:SetCore("SendNotification", {
-                        Title = "Killed NPC",
-                        Text = npc.Name .. " has been eliminated!",
-                        Duration = 0.7
-                    })
-                    lastTarget = nil
-                    removePlayerHighlight()
-                    camera.CameraSubject = player.Character and player.Character:FindFirstChild("Humanoid") or camera
-                end
-            else
-                lastTarget = nil
-                removePlayerHighlight()
-                camera.CameraSubject = player.Character and player.Character:FindFirstChild("Humanoid") or camera
-            end
-        end)
-    else
-        button.Text = "Konmeo22132's aim status: OFF"
-        if toggleLoop then
-            toggleLoop:Disconnect()
-            toggleLoop = nil
-        end
-        removePlayerHighlight()
-        camera.CameraSubject = player.Character and player.Character:FindFirstChild("Humanoid") or camera
-    end
-end
+AddButton(Tab2o, {
+    Name = "Inf jump",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/divinemanix/inf-jump-script/refs/heads/main/Protected.lua"))()
+  end
+  })
