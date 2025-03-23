@@ -21,7 +21,7 @@ local Window = MakeWindow({
 })
 
 MinimizeButton({
-    Image = "http://www.roblox.com/asset/?id=83190276951914",
+    Image = "http://www.roblox.com/asset/?id=121832166458851",
     Size = {60, 60},
     Color = Color3.fromRGB(10, 10, 10),
     Corner = true,
@@ -196,7 +196,7 @@ AddButton(Tab2o, {
   })
 
 AddButton(Tab2o, {
-    Name = "Inf jump",
+    Name = "Inf jump ( maybe bug, idc) ",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/divinemanix/inf-jump-script/refs/heads/main/Protected.lua"))()
   end
